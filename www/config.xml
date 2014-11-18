@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id = "com.brianCamera.example"
+        versionCode = "35"
+        version = "1.1.5" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>classpic</name>
+
+    <description>
+        second version of classpic
+    </description>
+
+    <author href="" email="">
+        B Cowzer & D Scanlon
+    </author>
+            
+         <icon src= "icon.png" />
+<gap:splash src="sc_320.png"  gap:platform="ios"     width="320" height="480" />
+    <gap:splash src="sc_640.png" gap:platform="ios" width="640" height="960" />
+    <gap:splash src="sc_1136.png" gap:platform="ios"     width="640" height="1136" />
+    <gap:splash src="sc_1024.png" gap:platform="ios" width="1024" height="768" />
+    <gap:splash src="sc_2048.png" gap:platform="ios" width="2048" height="1536" />
+    <gap:splash src="sc_1024_p.png" gap:platform="ios" width="768" height="1024" />
+    <gap:splash src="sc_2048_p.png" gap:platform="ios" width="1536" height="2048" />
+ 
+<icon src= "images/icon-57.png" gap:platform="ios" width="57" height="57"/>
+         <icon src= "images/icon-72.png" gap:platform="ios" width="72" height="72"/>
+         <icon src= "images/icon-76.png" gap:platform="ios" width="76" height="76"/>
+         <icon src= "images/icon-120.png" gap:platform="ios" width="120" height="120"/>
+         <icon src= "images/icon-152.png" gap:platform="ios" width="152" height="152"/>
+<preference name="orientation" value="landscape" /> 
+<feature name="http://api.phonegap.com/1.0/camera"/>
+        <gap:platform name="android" />
+        <gap:platform name="ios"/>
+<gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
+<gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
+</widget>
+
+    Status
+    API
+    Training
+    Shop
+    Blog
+    About
+
+    © 2014 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Contact
+
