@@ -254,6 +254,7 @@ on the second stage of the form*/
 	padding:2%;
 	font-size:100%;
 	background-color: #ffffff;
+	cursor:pointer;
 }
 /*this is used to space the buttons on statementsbody id*/
 .button-row{
