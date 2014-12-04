@@ -2,8 +2,8 @@
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id = "com.brianCamera.example"
-        versionCode = "35"
-        version = "1.1.6" >
+        versionCode = "36"
+        version = "1.1.7" >
 
     <!-- versionCode is optional and Android only -->
 
@@ -31,11 +31,12 @@
          <icon src= "images/icon-76.png" gap:platform="ios" width="76" height="76"/>
          <icon src= "images/icon-120.png" gap:platform="ios" width="120" height="120"/>
          <icon src= "images/icon-152.png" gap:platform="ios" width="152" height="152"/>
+
 <preference name="phonegap-version" value="3.4.0" />
 <preference name="orientation" value="landscape" /> 
 <feature name="http://api.phonegap.com/1.0/camera"/>
-        <gap:platform name="android" />
-        <gap:platform name="ios"/>
+<gap:platform name="android" />
+<gap:platform name="ios"/>
 <gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
 <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
 </widget>
