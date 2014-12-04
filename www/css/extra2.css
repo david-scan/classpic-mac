@@ -14,8 +14,8 @@ button:focus{
  #jumbo-index {
     position: relative;
     background: rgba(51, 51, 51, 0.8);
-    padding-top: auto;
-    padding-bottom:0%;
+    padding-top: 8%;
+    padding-bottom:8%;
     margin-top:10%;
     margin-bottom:10%;
     color: inherit;
@@ -35,7 +35,7 @@ button:focus{
   }
    #jumbo-index button{
     font-size:2em;
-    margin-bottom:4%;
+    margin-bottom:0;
 
   }
    #jumbo-index .btn-default{
@@ -51,11 +51,10 @@ button:focus{
 }*/
 #jumbo-index {
   margin:25% auto 25% auto;
+  padding-top: 10%;
+  padding-bottom:10%;
   }
   #jumbo-index input{
-  margin-bottom:6%;
-  }
-  #jumbo-index button{
   margin-bottom:6%;
   }
 }
@@ -64,12 +63,11 @@ button:focus{
   font-size:110%; 
 }*/
 #jumbo-index {
-  margin:25% auto 25% auto;
+  margin:30% auto 30% auto;
+  padding-top: 10%;
+  padding-bottom:10%;
   }
   #jumbo-index input{
-  margin-bottom:6%;
-  }
-  #jumbo-index button{
   margin-bottom:6%;
   }
 }
@@ -153,7 +151,6 @@ screen preview*/
 second stage form('statementbody')*/
 .form-holder{
 	position:absolute;
-	
 	height:100%;
 	top:0;
 	bottom:0;
@@ -240,16 +237,23 @@ on the second stage of the form*/
 	font-family: 'Open Sans', sans-serif;
 }
 
-/*properties added to the text-field comments box*/  
+/*properties added to the text-field comments box
 #user-comments{
 	width:100%;
 	border-radius:0.5em;
 	padding:2%;
 	font-size:100%;
-}
+}*/  
 .modal-link{
 	position:relative;
-	height:auto;
+	/*height:auto;*/
+	height:5em;
+	text-align: left;
+	width:100%;
+	border-radius:0.5em;
+	padding:2%;
+	font-size:100%;
+	background-color: #ffffff;
 }
 /*this is used to space the buttons on statementsbody id*/
 .button-row{
@@ -445,7 +449,30 @@ padding:2% 0 2% 0;
 #comment-modal .modal-content{
 	height:auto;
 }
+/*floating close button for comment modal*/
+#comment-modal .close-modal{
+	position:absolute;
+	z-index:1;
+	right:0.2%;
+	top:0;
+	border:none;
+	color:#f00;
+	font-size:1.8em;
+	background:none;
+	width:5%;
+	height:20%;
+	 -ms-transform: rotate(270deg); /* IE 9 */
+    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+    transform: rotate(270deg); /* Standard syntax */
+}
+#comment-modal .close-modal button{
+    padding:0;
+    line-height:2%;
 
+	}
+#comment-modal .close-modal .fa{
+	position:relative;
+}
 
 .modal-backdrop.in {
   filter: alpha(opacity=80);
@@ -470,8 +497,7 @@ camera operating button and top-right logo*/
 	right:0;
 	z-index:0;
 	text-align:center;
-	/*bottom:0;
-	top:0;*/
+
 }
 .camera-panel{
 	position:relative;
@@ -479,10 +505,7 @@ camera operating button and top-right logo*/
 	height:100%;
 	background-color:rgba(64,64,64,0.95);
 	text-align:center;
-	/*right:0;
-	bottom:0;
-	top:0;
-	z-index:0;*/
+
 }
 
 .camera-icon{
