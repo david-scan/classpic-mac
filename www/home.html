@@ -13,11 +13,13 @@
 <!-- loading what is the main body font--> 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
 rel='stylesheet' type='text/css'>
+<!--CSS for the icon font(camera icon, back arrows etc)-->
 <link rel="stylesheet" href="font-awesome-4.1.0/css/font-awesome.min.css">
 <!-- prepping for phonegap packaging--> 
 <script src="phonegap.js"></script>
-<script type="text/javascript" charset="utf-8">
 
+<script type="text/javascript" charset="utf-8">
+//success handler for the function just below it
    function onPhotoFileSuccess(imageData) {
         var userPhoto = document.getElementById('userPhoto');
  
@@ -25,7 +27,8 @@ rel='stylesheet' type='text/css'>
  
         userPhoto.src = imageData;
     }
-
+ //activated by clicking camera icon to access device camera 
+ //for more info go to https://github.com/apache/cordova-plugin-camera/blob/master/doc/index.md
  function capturePhotoWithFile() {
         navigator.camera.getPicture(onPhotoFileSuccess, onFail, {
             quality: 80, 
@@ -35,7 +38,7 @@ rel='stylesheet' type='text/css'>
             targetHeight: 500
         });
     }
-
+//failure handler for function just above it
    function onFail(message) {
         alert('Failed because: ' + message);
     }
@@ -44,34 +47,25 @@ rel='stylesheet' type='text/css'>
 
  <style type="text/css">
 body{
-       /*background-color: #333;*/ 
        background-image: url("images/LightMarker5.jpg");
        background-size:cover;
-       /*background-image:responsive;*/
        background-repeat: no-repeat;
        background-position: center center;
-       /*background-size:100%;*/
        background-attachment:fixed;
        font-family: 'Open Sans', sans-serif;
        height:100%;
        vertical-align:middle;
-
     } 
     </style> 
     
 </head>
 
 <body>
-
-<!--Outer div that houses other items
-<div>
-    
-    
-
-<!-- div that houses the image preview, it takes up left hand side of display-->
+<!-- div that houses the image preview, selected names and statement, it takes up left hand side of display-->
 <div class="image-holder" id="grey">
+<!--this is a feature with the file API that contains the image preview within image-holder-->	
  <output id="list"></output>
- <!--div displaying the selected statement, positions directly underneath image-->
+ <!--div displaying the selected statement, positions directly underneath the image-->
  <div class="chosen-statement" id="chosen_state">
  </div>
  <!--div displaying selected student names, displays at bottom of image holder div-->
@@ -79,11 +73,10 @@ body{
  </div>
     </div>
 
-<!--  div that contains the form for setting the parameters needed to refine the student names and statements-->
+<!--  div that contains the form for selecting the teachers class-->
 <div class="form-holder" id='params'>
   <div class="forms">
 		 <form name = "userclass">
-    	<!--<div class="button-row">-->
 	<select class="form-control" name='class' onchange="classid = this.value" id='class' placeholder='Class Year'>
 		<option value='0' selected disabled><em>Select Class Year</em></option>
 			<option value='674'>Early Years group Nursery A</option>
@@ -92,12 +85,13 @@ body{
  
         </form>
 	<button class="btn btn-success btn-block" input type="button" value='Go' onclick="submit();">Load Class Settings</button>
+	<!--div that appears when an upload attempted without selecting one of the classes-->
 	<div class="warning-box" id="first-warning"></div>
-<!--</div>-->
 </div>
 </div>
+<!--end of first stage of homepage-->
 
-
+<!--second stage of homepage-->
 <!--When parameters are selected on the form in 'params' div above this window will be seen, where the teacher is able to select students, a statement and upload multiples pictures-->
 <div id='statementsbody' class="form-holder" style='display:none;'>
 <div class="forms">
@@ -107,7 +101,7 @@ body{
 <div class="button-row"><button class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#stu-sel"><span class="fa"><i class="fa fa-tags"></i></span>Select Students
 </button></div>
 
-<!-- Modal dialog that appears when the 'Students' button is selectedonClick="nameValues()"-->
+<!-- Modal dialog that appears when the 'Students' button is selected-->
 <div class="modal fade" id="stu-sel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -123,7 +117,7 @@ body{
       	<!--This div is dynamically loaded with Student names-->
         <div id="student-nama">
         </div>
-        <!--function to allow checked student names to display in 'stud-names' div-->
+        <!--function to allow checked student names to display in 'stud-names' div on left side of screen-->
         <script>function seeNames(){
 			var selectedName=document.getElementsByName('students[]');
 			
@@ -147,9 +141,9 @@ body{
 </div>
 <!--(end of first modal, back to statementbody form)-->
 
-
+<!--button for selecting a statement-->
 <div class="button-row"><button class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#state_sel"><span class="fa fa-star"></span>Statements</button></div>
-<!-- Modal dialog that appears when the 'Statements' button is selected-->
+<!-- Modal dialog that appears when the 'Statements' button is selected, it has 2 selection stages-->
 <div class="modal fade" id="state_sel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -161,10 +155,10 @@ body{
     </div>
       </div>
       <div class="modal-body">
-      	<!--This div is dynamically loaded with Statements-->
+      	<!--this div is the first stage where the criteria for the statements is set-->
  <div class="statement-panel" id="state_crit">
 	     	<form name = "userprofile">
-    	
+    	<!--first parameter for statement criteria-->
 	<select class="form-control" name='profile' onChange= "profileid = this.value" id='profile'>
         <option value='0' selected disabled><em>Select Class Profile</em></option>
 		<option value='ELG'>Early learning Goals</option>
@@ -172,7 +166,7 @@ body{
 		<option value='EYFS3648'>Early Years Foundation Stage 3648</option>
 	</select>
 
-    
+    <!--second parameter for statement criteria-->
 	<select class="form-control" name='component' onChange="componentid = this.value" id='component'>
 		<option value='0' selected disabled><em>Select Component</em></option>
             <option value='PSED:SCSA'>PSED: Self-confidence and Self-awareness</option>
@@ -197,6 +191,7 @@ body{
 
         </form>
     </div>
+    <!--this div is the second stage where the statements set by criteria of the first stage dynamically fill-->
      <div id="statements">
      	<!--script that allows selected statement to display in 'chosen_state' div-->
      	<script>
@@ -220,12 +215,15 @@ body{
   </div>
 </div>
 <!--(end of second modal, back to statementbody form)-->	
+
 <!--Text box for adding any additional comments-->
-<div class="button-row"><div class="modal-link" data-toggle="modal" data-target=".bs-example-modal-lg"><textarea rows="3" id="user-comments" placeholder="Comments">
-</textarea></div></div>
+<div class="button-row"><div class="modal-link" id="user-comments" data-toggle="modal" data-target=".bs-example-modal-lg">Comments<!--<textarea rows="3" id="user-comments" placeholder="Comments">
+</textarea>--></div></div>
+<!--modal that appears when above text-box clicked so user has a bigger tying area-->
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="comment-modal" keyboard="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
+     <button class="close-modal" data-dismiss="modal"><span class="fa fa-times-circle"></span></button>
       <textarea rows="4" id="modal-comments" onchange="getText()" placeholder="Comments"></textarea>
     </div>
   </div>
@@ -238,10 +236,13 @@ body{
 </div>
 <!--</div>-->
 <!--end of div class 'form-holder' and its 2 forms-->
+
 <!--right hand div that contains the camera operation icon--> 
 <div class="right-side">
+	<!-- image at top right of screen-->
 <div class="classpic"><img src="images/classpic_mini_tran.png">
 </div>
+<!--contains the camera button-->
 <div class="camera-panel">
 <button class="camera-icon" onclick="capturePhotoWithFile();"><span class="fa fa-camera"></span></button>
 </div>
@@ -285,7 +286,6 @@ body{
 			if(xmlhttp.readyState==4 && xmlhttp.status==200){
 				var data=JSON.parse(xmlhttp.responseText);
 				if(data.success){
-					//console.log(data.students);
 					
 					for(i=0;i<data.students.length;i++){
 						var studentdiv=document.createElement('div');
@@ -325,10 +325,10 @@ body{
      
             return function(e) {
 
-            	
-              document.getElementById('list').innerHTML = ['<img id="sel_image" src="', e.target.result,'" title="', theFile.name,'" onload="imageRotate()"/>'].join('');
+            //selection of image added to the output region on left side of screen	
+              document.getElementById('list').innerHTML = ['<img id="sel_image" src="', e.target.result,'" title="', theFile.name,'" onload="imageResize()"/>'].join('');
               
-             
+            //selecting image turns all left side of display transparent grey 
               document.getElementById('grey').style.backgroundColor = "rgba(64,64,64,0.8)";
             };
           })(f);
@@ -348,14 +348,13 @@ body{
 			if(xmlhttps.readyState==4 && xmlhttps.status==200){
 				var data=JSON.parse(xmlhttps.responseText);
 				if(data.success){
-					//console.log(data.statements);
 					for(i=0;i<data.statements.length;i++){
 
 						var statementdiv=document.createElement('div');
 						statementdiv.id="statement";
 						var str = data.statements[i].statement;
+						//removing unwanted characters from statements
 						var newstatement = str.replace ("^", " ").replace ("#", " ").replace ("~", " ").replace ("*", " ");
-						//var capstatement= newstatement.slice(0, 1).toUpperCase() + newstatement.slice(1, newstatement.length);
 						statementdiv.innerHTML="<div class='radio'><label><input type='radio' onclick='chosenStatement()' name='statement' value='"+data.statements[i].skillid+"'>"+newstatement+"</label></div>";
 						document.getElementById('statements').appendChild(statementdiv);
 					}
@@ -364,7 +363,7 @@ body{
 		}
 		xmlhttps.open("GET",apiURL+"?schoolid="+schoolid+"&username="+user+"&token="+token+"&action=getstatements&componentid="+componentid+"&profileid="+profileid,true);
 		xmlhttps.send();
-		
+		//pressing 'Get Statements' also changes the statements modal to allow for the Statements to be displayed
         document.getElementById('statements').style.display='block';
         document.getElementById('state_crit').style.display='none';
         document.getElementById('myModalLabel_2').innerHTML="Select Statement";
@@ -399,7 +398,7 @@ body{
 									}
 								}
 							//getting the value from the comments box
-							var comments = document.getElementById("user-comments").value;
+							var comments = document.getElementById("user-comments").innerHTML;
 			                //getting the value from radio buttons	
 							var radiobuttons=document.getElementsByName('statement');
 							var checkedRadio='';
@@ -414,8 +413,8 @@ body{
 									console.log(xmlhttpf.responseText);
 									var data=JSON.parse(xmlhttpf.responseText);
 									console.log(data);
-
-
+									//checking all required parameters are selected by user before uploading photo
+									//if there are no names or statements selected, error messages appear
 							       if (namecheck==null && statecheck==null){
 										document.getElementById('chosen_state').innerHTML='<div class="warning-text">"Please Select A Student & Statement!"</div>';	
 									   }
@@ -425,6 +424,7 @@ body{
 								   else if (namecheck==null && statecheck!=null){
 										document.getElementById('stud-names').innerHTML='<div class="warning-text">"Please Select A Student!"</div>';
 									   }
+									   //if all criteria ok, upload can proceed
 								   else if (data.success){
 										alert('File uploaded');
 										location = "home.html";
@@ -441,11 +441,7 @@ body{
 							
 							
 
-						}	
-
-
-						//};
-
+						}
 
 				
 				})(files[i]);
@@ -458,7 +454,7 @@ body{
 		};
 	
 	/*****Remaining functions linked to buttons**/
-	/*moves home page to next stage and gives a warning if parameter has not been selected*/
+	/*moves home page to next stage and gives a warning if parameter for choosing a class has not been selected*/
 		function submit(){
 			if(classid==0){
 document.getElementById('first-warning').innerHTML='<div class="warning-text">"Please Select A Class Year!"</div>';
@@ -466,8 +462,7 @@ document.getElementById('first-warning').innerHTML='<div class="warning-text">"P
 			else{
 			document.getElementById('params').style.display='none';
 			document.getElementById('statementsbody').style.display='block';
-			/*Makes the calls sending the necessary parameters*/
-			/*No need for storing any parameter*/
+
 			statementsbody();
 		}
 	}
@@ -487,10 +482,12 @@ document.getElementById('first-warning').innerHTML='<div class="warning-text">"P
 			var x =document.getElementById("modal-comments").value;
             document.getElementById("user-comments").innerHTML=x;	
 		}
-		/*the back button on page2 reloads it*/
+
+		/*the back button on home (below 'Upload' button) reloads it*/
 		function reLoad(){
 			location.reload();
 		}
+
 		/*Gives a warning in case user does the unthinkable and not even bother selecting photo
 		before hitting upload button*/
 		function checkPic(){
@@ -504,8 +501,8 @@ document.getElementById('first-warning').innerHTML='<div class="warning-text">"P
 				
 		}
 
-		/*here is where the image scale is set e.g if height of selected image is greater than width. Than displayed width after selection is reduced to save vertical space. Its triggered by an 'onload' placed in the dynamically added image attributes*/
-		function imageRotate(){
+		/*here is where the image scale is set e.g if height of selected image is greater than width, than displayed width after selection is reduced to save vertical space. Its triggered by an 'onload' placed in the dynamically added image attributes*/
+		function imageResize(){
 		var img_w=document.getElementById('sel_image').width;
               var img_h=document.getElementById('sel_image').height; 
               if (img_h>=img_w){
@@ -514,7 +511,7 @@ document.getElementById('first-warning').innerHTML='<div class="warning-text">"P
               else if(img_w>img_h){
               	document.getElementById('list').style.width="100%";
               }  
-}
+        }
 			
 </script>
 
